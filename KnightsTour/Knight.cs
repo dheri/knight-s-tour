@@ -6,15 +6,11 @@ using System.Threading.Tasks;
 
 namespace KnightsTour
 {
-    class Program
+    class Knight
     {
-        static void Main(string[] args)
+        public void Move()
         {
-            new ChessBoard();
-
-            Console.Write("Done with prog");
-            Console.ReadKey();
         }
-        
     }
+
 }

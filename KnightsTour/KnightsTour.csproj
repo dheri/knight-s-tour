@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChessBoard.cs" />
+    <Compile Include="ChessSquare.cs" />
+    <Compile Include="Knight.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
