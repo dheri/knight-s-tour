@@ -10,78 +10,79 @@ namespace Element
     {
         private int boardSize = 8;
 
-        private int row;
-        private int column;
-        private bool isCovered = false;
-        private int order;
+        //private int row;
+        //private int column;
+        //private bool isCovered = false;
+        //private int order;
 
         //not used
-        private int number;
-        private int reach;
-        private string name;
+        //private int number;
+        //private int reach;
+        //private string name;
 
         public ChessSquare(int row, int column)
         {
-            this.row = row;
-            this.column = column;
+            Row = row;
+            Column = column;
 
-            number = (row * 8 + column) + 1;
-            name = "" + (row + 1) + (char)(column + 65);
+            Number = (row * 8 + column) + 1;
+            Name = "" + (row + 1) + (char)(column + 65);
             SetReach();
         }
-
-        public bool IsCovered { get => isCovered; set => isCovered = value; }
-        public int Order { get => order; set => order = value; }
-        public int Number { get => number; }
-        public int Reach { get => reach; }
-        public string Name { get => name; }
+        private int Row { set; get; }
+        private int Column { set; get; }
+        public bool IsCovered { get; set; }
+        public int Order { get; set; }
+        public int Number { get; set; }
+        public int Reach { get; set; }
+        public string Name { get; set; }
 
 
         private void SetReach()
         {
-            if (row == 0 || row == boardSize - 1)
+            if (Row == 0 || Row == boardSize - 1)
             {
-                if (column == 0 || column == boardSize - 1)
+                if (Column == 0 || Column == boardSize - 1)
                 {
-                    reach = 2;
+                    Reach = 2;
                 }
-                else if (column == 1 || column == boardSize - 2)
+                else if (Column == 1 || Column == boardSize - 2)
                 {
-                    reach = 3;
+                    Reach = 3;
                 }
                 else
                 {
-                    reach = 4;
+                    Reach = 4;
                 }
             }
-            else if (row == 1 || row == boardSize - 2)
+            else if (Row == 1 || Row == boardSize - 2)
             {
-                if (column == 0 || column == boardSize - 1)
+                if (Column == 0 || Column == boardSize - 1)
                 {
-                    reach = 3;
+                    Reach = 3;
                 }
-                else if (column == 1 || column == boardSize - 2)
+                else if (Column == 1 || Column == boardSize - 2)
                 {
-                    reach = 4;
+                    Reach = 4;
                 }
                 else
                 {
-                    reach = 6;
+                    Reach = 6;
                 }
             }
             else
             {
-                if (column == 0 || column == boardSize - 1)
+                if (Column == 0 || Column == boardSize - 1)
                 {
-                    reach = 4;
+                    Reach = 4;
                 }
-                else if (column == 1 || column == boardSize - 2)
+                else if (Column == 1 || Column == boardSize - 2)
                 {
-                    reach = 6;
+                    Reach = 6;
                 }
                 else
                 {
-                    reach = 8;
+                    Reach = 8;
                 }
             }
         }

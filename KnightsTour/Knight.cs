@@ -39,16 +39,34 @@ namespace Element
             return counter;
         }
 
-        public void MoveSmart()
+        public int MoveSmart()
         {
             //TODO complete this
+            int counter = 1;
+            int[][] moves = getMoves();
+
+            while (moves.Length > 0)
+            {
+                int[] reach = new int[moves.GetLength(0)];
+
+                //creating array of move's reach
+                for (int i = 0; i < reach.Length; i++)
+                {
+                    reach[i] = chessBoard.Board[moves[i][0], moves[i][1]].Reach;
+                }
+                int minIndex = Array.IndexOf(reach, reach.Min());
+                MoveTO(moves[minIndex][0], moves[minIndex][1], ++counter); //move to next minIndex
+                moves = getMoves();
+            }
+            return counter;
+
         }
 
         private void MoveTO(int row, int column, int counter)
         {
             this.row = row;
             this.column = column;
-            Console.WriteLine("{0}-> {1},{2}" , counter, row, column);
+            Console.WriteLine("{0}-> {1},{2}", counter, row, column);
             chessBoard.Board[row, column].Order = counter;
             chessBoard.Board[row, column].IsCovered = true;
         }
