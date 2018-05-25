@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KnightsTour
+namespace Element
 {
     class ChessBoard
     {
@@ -17,6 +17,18 @@ namespace KnightsTour
             Init();
         }
 
+        public ChessBoard(int size)
+        {
+            this.size = size;
+            board = new ChessSquare[size, size];
+            Init();
+        }
+        public int Size
+        {
+            get { return size; }
+        }
+
+        // Initialize  
         private void Init()
         {
             byte counter = 0;
@@ -26,13 +38,13 @@ namespace KnightsTour
                 {
                     board[i, j] = new ChessSquare(i, j);
                     //reach
-
-                    Console.Write(" {1} ", board[i, j].Name, board[i, j].Reach);
                 }
 
-
-                Console.WriteLine();
             }
+        }
+        public ChessSquare[,] Board
+        {
+            get { return board; }
         }
 
     }

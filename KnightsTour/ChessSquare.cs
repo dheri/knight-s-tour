@@ -4,16 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KnightsTour
+namespace Element
 {
     class ChessSquare
     {
         private int boardSize = 8;
-        private string name;
+
         private int row;
         private int column;
+        private bool isCovered = false;
+        private int order;
+
+        //not used
         private int number;
         private int reach;
+        private string name;
 
         public ChessSquare(int row, int column)
         {
@@ -25,35 +30,18 @@ namespace KnightsTour
             SetReach();
         }
 
-        public int Number
-        {
-            get
-            {
-                return number;
-            }
-        }
+        public bool IsCovered { get => isCovered; set => isCovered = value; }
+        public int Order { get => order; set => order = value; }
+        public int Number { get => number; }
+        public int Reach { get => reach; }
+        public string Name { get => name; }
 
-        public int Reach
-        {
-            get
-            {
-                return reach;
-            }
-        }
 
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-        }
-
-        public void SetReach()
+        private void SetReach()
         {
             if (row == 0 || row == boardSize - 1)
             {
-                if (column == 0 || column == boardSize -1)
+                if (column == 0 || column == boardSize - 1)
                 {
                     reach = 2;
                 }
