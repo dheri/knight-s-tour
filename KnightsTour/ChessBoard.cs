@@ -8,25 +8,26 @@ namespace Element
 {
     class ChessBoard
     {
-        private int size = 8;
         private ChessSquare[,] board;
-
+        private int size = 8;
+        public int Size
+        {
+            get { return size; }
+            set { size = value; }
+        }
         public ChessBoard()
         {
-            board = new ChessSquare[size, size];
+            board = new ChessSquare[Size, Size];
             Init();
         }
 
         public ChessBoard(int size)
         {
-            this.size = size;
+            Size = size;
             board = new ChessSquare[size, size];
             Init();
         }
-        public int Size
-        {
-            get { return size; }
-        }
+
 
         // Initialize  
         private void Init()
@@ -45,6 +46,18 @@ namespace Element
         public ChessSquare[,] Board
         {
             get { return board; }
+        }
+
+        public void PrintFinalState()
+        {
+            for (int i = 0; i < this.Board.GetLength(0); i++)
+            {
+                for (int j = 0; j < this.Board.GetLength(1); j++)
+                {
+                    Console.Write("{0:D2} ", this.Board[i, j].Order);
+                }
+                Console.WriteLine("");
+            }
         }
 
     }
