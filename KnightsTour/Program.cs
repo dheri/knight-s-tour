@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Element;
 
 namespace KnightsTour
 {
     class Program
     {
-        static void Main(string[] args)
+        [STAThread]
+        static void Main()
         {
             Console.WriteLine("Start\n");
 
@@ -30,7 +32,11 @@ namespace KnightsTour
 
 
             Console.WriteLine("\nProgram complete");
-            Console.ReadKey();
+            //Console.ReadKey();
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
         }
 
     }

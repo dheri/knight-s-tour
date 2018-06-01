@@ -34,6 +34,9 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,14 +45,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChessBoard.cs" />
-    <Compile Include="ChessSquare.cs" />
-    <Compile Include="Knight.cs" />
+    <Compile Include="Element\ChessBoard.cs" />
+    <Compile Include="Element\ChessSquare.cs" />
+    <Compile Include="Element\Knight.cs" />
+    <Compile Include="GUI\ChessBoard.cs" />
+    <Compile Include="GUI\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Game.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GUI\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\dark.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\DataSources\Element.ChessBoard.datasource" />
+    <None Include="Properties\DataSources\Form1.datasource" />
+    <None Include="Properties\light.bmp" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
