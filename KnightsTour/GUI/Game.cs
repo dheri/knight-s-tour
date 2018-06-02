@@ -15,6 +15,7 @@ namespace GUI
         private int initialX;
         private int initialY;
         private string algorithmType;
+        public int TotalMoves{ get; set; }
 
         public Game(string algorithmType, int initialX, int initialY)
         {
