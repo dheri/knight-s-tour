@@ -44,7 +44,7 @@ namespace Element
             //TODO complete this
             int counter = 1;
             int[][] moves = getMoves();
-
+            Random rand = new Random();
             while (moves.Length > 0)
             {
                 int[] reach = new int[moves.GetLength(0)];
@@ -54,8 +54,24 @@ namespace Element
                 {
                     reach[i] = chessBoard.Board[moves[i][0], moves[i][1]].Reach;
                 }
-                int minIndex = Array.IndexOf(reach, reach.Min());
-                MoveTO(moves[minIndex][0], moves[minIndex][1], ++counter); //move to next minIndex
+
+                //finding all positions with lowest reach
+                for (int i = 0; i < reach.Length; i++)
+                {
+                    reach[i] = chessBoard.Board[moves[i][0], moves[i][1]].Reach;
+                }
+                int minReach = reach.Min();
+                //int minIndex = Array.IndexOf(reach, reach.Min()); //first minIndex
+                List<int> minIndexes = new List<int>();
+                for (int i = 0; i < reach.Length; i++)
+                {
+                    if (reach[i] == minReach)
+                    {
+                        minIndexes.Add(i);
+                    }
+                }
+                int minIndex = rand.Next(minIndexes.Count);
+                MoveTO(moves[minIndexes[minIndex]][0], moves[minIndexes[minIndex]][1], ++counter); //move to next minIndex
                 moves = getMoves();
             }
             return counter;
@@ -70,6 +86,7 @@ namespace Element
             chessBoard.Board[row, column].Order = counter;
             chessBoard.Board[row, column].IsCovered = true;
         }
+        //return all possible moves
         private int[][] getMoves()
         {
             int[][] moves = new int[8][];
