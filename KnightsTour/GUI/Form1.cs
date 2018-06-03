@@ -15,10 +15,11 @@ namespace KnightsTour
     {
         private Game[] games;
         private PictureBox[,] picturebox;
+        private int layoutNum = 0;
         public Form1()
         {
             InitializeComponent();
-            InitializePicArray();
+            DrawBoard(null);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -41,8 +42,9 @@ namespace KnightsTour
 
         }
 
-        private void InitializePicArray()
+        private void DrawBoard(Element.ChessBoard chessBoard)
         {
+            tableLayoutPanel1.Controls.Clear();
             picturebox = new PictureBox[8, 8];
             bool isBoxDark = false;
             for (int i = 0; i < picturebox.GetLength(0); i++, isBoxDark = !isBoxDark)
@@ -50,9 +52,15 @@ namespace KnightsTour
                 for (int j = 0; j < picturebox.GetLength(1); j++, isBoxDark = !isBoxDark)
                 {
                     picturebox[i, j] = getDarkBox(isBoxDark);
+                    if (chessBoard != null)
+                    {
+                        WriteTextOnPictureBox(picturebox[i, j], chessBoard.Board[i, j].Order);
+                    }
                     tableLayoutPanel1.Controls.Add(picturebox[i, j], i, j);
                 }
             }
+            
+            label7.Text = string.Format("{0}", layoutNum + 1);
         }
         private PictureBox getDarkBox(bool seriously)
         {
@@ -84,6 +92,7 @@ namespace KnightsTour
 
         private void button1_Click(object sender, EventArgs e)
         {
+            layoutNum = 0;
             int tries = (int)numberOfTries.Value;
             string algorithmType = radioButton1.Checked ? "dumb" : "smart";
             string temp1 = radioButton3.Checked ? "-1,-1" : numericUpDown1.Value + "," + numericUpDown2.Value;
@@ -131,26 +140,10 @@ namespace KnightsTour
             this.button2.Visible = true;
             this.button3.Visible = true;
 
-            updateChessBoard(games[0].chessBoard);
+            DrawBoard(games[0].chessBoard);
 
         }
 
-
-        void updateChessBoard(Element.ChessBoard chessBoard)
-        {
-            redrawBoard();
-
-            for (int i = 0; i < chessBoard.Board.GetLength(0); i++)
-            {
-                for (int j = 0; j < chessBoard.Board.GetLength(0); j++)
-                {
-                    //tableLayoutPanel1.Controls.Add(getDarkBox(isBoxDark), i, j);
-                    //picturbox[i,j].
-                    WriteTextOnPictureBox(picturebox[i, j], chessBoard.Board[i, j].Order);
-                }
-
-            }
-        }
 
         private void WriteTextOnPictureBox(PictureBox PB, int order)
         {
@@ -177,20 +170,36 @@ namespace KnightsTour
 
                     e.Graphics.DrawString(text, Font, Brushes.Black, locationToDraw);
                 });
-
-
             }
             //refresh picture box
             PB.Invalidate();
             PB.Update();
             PB.Refresh();
         }
-        private void redrawBoard()
+        //previous btn
+        private void button2_Click(object sender, EventArgs e)
         {
-            tableLayoutPanel1.Controls.Clear();
-            InitializePicArray();
+            if (layoutNum <= 0)
+            {
+                return;
+            }
+            layoutNum--;
+            label7.Text = string.Format("{0}", layoutNum + 1);
+            DrawBoard(games[layoutNum].chessBoard);
 
         }
+        //next button
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (layoutNum >= games.Length - 1)
+            {
+                return;
+            }
+            layoutNum++;
+            label7.Text = string.Format("{0}", layoutNum + 1);
+            DrawBoard(games[layoutNum].chessBoard);
+        }
+
 
     }
 }
