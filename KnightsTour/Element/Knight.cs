@@ -16,6 +16,7 @@ namespace Element
         {
             this.chessBoard = chessBoard;
             MoveTO(row, column, 1);
+            Console.WriteLine("init pos: {0},{1}" , row, column);
         }
 
         public Knight(ChessBoard chessBoard)
@@ -26,13 +27,13 @@ namespace Element
 
         public int MoveDumb()
         {
-            Random rand = new Random();
+            //Random rand = new Random();
             //get array of valid moves from current position
             int[][] moves = getMoves();
             int counter = 1;
             while (moves.Length > 0)
             {
-                int next = rand.Next(moves.Length);
+                int next = Utils.NextRandom(moves.Length);
                 MoveTO(moves[next][0], moves[next][1], ++counter); //move to next rand
                 moves = getMoves();
             }
@@ -44,7 +45,6 @@ namespace Element
             //TODO complete this
             int counter = 1;
             int[][] moves = getMoves();
-            Random rand = new Random();
             while (moves.Length > 0)
             {
                 int[] reach = new int[moves.GetLength(0)];
@@ -70,7 +70,7 @@ namespace Element
                         minIndexes.Add(i);
                     }
                 }
-                int minIndex = rand.Next(minIndexes.Count);
+                int minIndex = Utils.NextRandom(minIndexes.Count);
                 MoveTO(moves[minIndexes[minIndex]][0], moves[minIndexes[minIndex]][1], ++counter); //move to next minIndex
                 moves = getMoves();
             }
@@ -82,7 +82,7 @@ namespace Element
         {
             this.row = row;
             this.column = column;
-            Console.WriteLine("{0}-> {1},{2}", counter, row, column);
+            //Console.WriteLine("{0}-> {1},{2}", counter, row, column);
             chessBoard.Board[row, column].Order = counter;
             chessBoard.Board[row, column].IsCovered = true;
         }

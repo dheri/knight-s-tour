@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F9F6AAD0-2193-4C9F-B11C-39B14E37CC9A}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>KnightsTour</RootNamespace>
     <AssemblyName>KnightsTour</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
@@ -83,6 +83,7 @@
   <ItemGroup>
     <Compile Include="Element\ChessBoard.cs" />
     <Compile Include="Element\ChessSquare.cs" />
+    <Compile Include="Element\Utils.cs" />
     <Compile Include="Element\Knight.cs" />
     <Compile Include="GUI\ChessBoard.cs" />
     <Compile Include="GUI\Form1.cs">

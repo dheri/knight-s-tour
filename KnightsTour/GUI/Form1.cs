@@ -14,7 +14,7 @@ namespace KnightsTour
     public partial class Form1 : Form
     {
         private Game[] games;
-        private PictureBox[,] picturbox = new PictureBox[8, 8];
+        private PictureBox[,] picturebox;
         public Form1()
         {
             InitializeComponent();
@@ -43,13 +43,14 @@ namespace KnightsTour
 
         private void InitializePicArray()
         {
-            PictureBox[,] picturbox = new PictureBox[8, 8];
+            picturebox = new PictureBox[8, 8];
             bool isBoxDark = false;
-            for (int i = 0; i < picturbox.GetLength(0); i++, isBoxDark = !isBoxDark)
+            for (int i = 0; i < picturebox.GetLength(0); i++, isBoxDark = !isBoxDark)
             {
-                for (int j = 0; j < picturbox.GetLength(1); j++, isBoxDark = !isBoxDark)
+                for (int j = 0; j < picturebox.GetLength(1); j++, isBoxDark = !isBoxDark)
                 {
-                    tableLayoutPanel1.Controls.Add(getDarkBox(isBoxDark), i, j);
+                    picturebox[i, j] = getDarkBox(isBoxDark);
+                    tableLayoutPanel1.Controls.Add(picturebox[i, j], i, j);
                 }
             }
         }
@@ -88,22 +89,108 @@ namespace KnightsTour
             string temp1 = radioButton3.Checked ? "-1,-1" : numericUpDown1.Value + "," + numericUpDown2.Value;
             String[] substrings = temp1.Split(',');
             int[] initalPostion = { Int32.Parse(substrings[0]), Int32.Parse(substrings[1]) };
-            Console.WriteLine("{0},{1}, {2},{3}" , tries, algorithmType, initalPostion[0], initalPostion[1]);
-            games = new Game[tries];
+            Console.WriteLine("{0},{1}, {2},{3}", tries, algorithmType, initalPostion[0], initalPostion[1]);
+            games = new Game[tries]; //aray of games
+            List<int> results = new List<int>(); //list of # of moves in each game
 
 
-            for (int i =0; i < games.Length; i++)
+            for (int i = 0; i < games.Length; i++)
             {
                 games[i] = new Game(algorithmType, initalPostion[0], initalPostion[1]);
-                games[i].play();
+                results.Add(games[i].play());
             }
-             //**   game =
-            
+
+            double average = results.Average();
+            double sumOfSquaresOfDifferences = results.Select(val => (val - average) * (val - average)).Sum();
+            double sd = Math.Sqrt(sumOfSquaresOfDifferences / results.Count);
+            Console.WriteLine("{2} \n Average: {0}   S.D: {1}\n", average, sd, String.Join(", ", results.ToArray()));
+            updateStats(results);
+
+
         }
 
-        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        void updateStats(List<int> results)
         {
+            double average = results.Average();
+            double sumOfSquaresOfDifferences = results.Select(val => (val - average) * (val - average)).Sum();
+            double sd = Math.Sqrt(sumOfSquaresOfDifferences / results.Count);
+
+            //show Labels
+            this.label2.Visible = true;
+            this.label3.Visible = true;
+            this.label4.Visible = true;
+            this.label5.Visible = true;
+            this.label6.Visible = true;
+            this.label7.Visible = true;
+
+            //update values
+            label4.Text = string.Format("{0:N2}", average);
+            label5.Text = string.Format("{0:N2}", sd);
+
+            //show buttons
+            this.button2.Visible = true;
+            this.button3.Visible = true;
+
+            updateChessBoard(games[0].chessBoard);
 
         }
+
+
+        void updateChessBoard(Element.ChessBoard chessBoard)
+        {
+            redrawBoard();
+
+            for (int i = 0; i < chessBoard.Board.GetLength(0); i++)
+            {
+                for (int j = 0; j < chessBoard.Board.GetLength(0); j++)
+                {
+                    //tableLayoutPanel1.Controls.Add(getDarkBox(isBoxDark), i, j);
+                    //picturbox[i,j].
+                    WriteTextOnPictureBox(picturebox[i, j], chessBoard.Board[i, j].Order);
+                }
+
+            }
+        }
+
+        private void WriteTextOnPictureBox(PictureBox PB, int order)
+        {
+            if (order == 0)
+            {
+                PB.Dock = System.Windows.Forms.DockStyle.Fill;
+                // PB.BackColor = System.Drawing.Color.Transparent;
+                PB.Image = global::KnightsTour.Properties.Resources.sweden;
+                PB.Location = new System.Drawing.Point(3, 251);
+                PB.Size = new System.Drawing.Size(62, 56);
+                PB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            }
+            else
+            {
+                PB.Paint += new PaintEventHandler((sender, e) =>
+                {
+                    e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+                    string text = order + "";
+
+                    SizeF textSize = e.Graphics.MeasureString(text, Font);
+                    PointF locationToDraw = new PointF();
+                    locationToDraw.X = (PB.Width / 2) - (textSize.Width / 2);
+                    locationToDraw.Y = (PB.Height / 2) - (textSize.Height / 2);
+
+                    e.Graphics.DrawString(text, Font, Brushes.Black, locationToDraw);
+                });
+
+
+            }
+            //refresh picture box
+            PB.Invalidate();
+            PB.Update();
+            PB.Refresh();
+        }
+        private void redrawBoard()
+        {
+            tableLayoutPanel1.Controls.Clear();
+            InitializePicArray();
+
+        }
+
     }
 }

@@ -13,25 +13,25 @@ namespace KnightsTour
         [STAThread]
         static void Main()
         {
-            Console.WriteLine("Start\n");
+            //Console.WriteLine("Start\n");
 
-            ChessBoard chessBoard = new ChessBoard();
-            Knight knight = new Knight(1, 2, chessBoard);
-            knight.MoveDumb();
-            chessBoard.PrintFinalState();
+            //ChessBoard chessBoard = new ChessBoard();
+            //Knight knight = new Knight(1, 2, chessBoard);
+            //knight.MoveDumb();
+            //chessBoard.PrintFinalState();
 
-            Console.WriteLine("\n\n\n");
+            //Console.WriteLine("\n\n\n");
 
-            chessBoard = new ChessBoard();
-            knight = new Knight(7, 2, chessBoard);
+            //chessBoard = new ChessBoard();
+            //knight = new Knight(7, 2, chessBoard);
 
-            knight.MoveSmart();
-            Console.WriteLine("\n");
-            chessBoard.PrintFinalState();
-            Console.WriteLine("\n");
+            //knight.MoveSmart();
+            //Console.WriteLine("\n");
+            //chessBoard.PrintFinalState();
+            //Console.WriteLine("\n");
 
 
-            Console.WriteLine("\nProgram complete");
+            //Console.WriteLine("\nProgram complete");
             //Console.ReadKey();
 
             Application.EnableVisualStyles();

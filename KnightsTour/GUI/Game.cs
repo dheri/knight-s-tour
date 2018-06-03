@@ -10,21 +10,18 @@ namespace GUI
 {
     class Game
     {
-        Element.ChessBoard chessBoard;
-        Knight knight;
-        private int initialX;
-        private int initialY;
+        public Element.ChessBoard chessBoard;
+        private Knight knight;
         private string algorithmType;
+        private int numOfMoves;
         public int TotalMoves{ get; set; }
 
         public Game(string algorithmType, int initialX, int initialY)
         {
-            Init();
-            this.initialX = initialX;
-            this.initialY = initialY;
+            Init(initialX, initialY);
             this.algorithmType = algorithmType;
         }
-        public void Init()
+        public void Init( int initialX, int initialY)
         {
             chessBoard = new Element.ChessBoard();
             if (initialX == -1 && initialY == -1)
@@ -49,13 +46,13 @@ namespace GUI
             {
                 moves = knight.MoveSmart();
             }
+            numOfMoves = moves;
             return moves;
         }
 
         private int RandomPosition()
         {
-            Random rand = new Random();
-            return rand.Next(8);
+            return Utils.NextRandom(8);
         }
     }
 
