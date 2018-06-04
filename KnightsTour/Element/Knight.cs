@@ -16,7 +16,6 @@ namespace Element
         {
             this.chessBoard = chessBoard;
             MoveTO(row, column, 1);
-            Console.WriteLine("init pos: {0},{1}" , row, column);
         }
 
         public Knight(ChessBoard chessBoard)

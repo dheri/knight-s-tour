@@ -50,6 +50,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -74,28 +76,26 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
+            this.radioButton2.Checked = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.Location = new System.Drawing.Point(147, 34);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(66, 22);
             this.radioButton2.TabIndex = 1;
+            this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Smart";
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.Location = new System.Drawing.Point(18, 34);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(66, 22);
             this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Dumb";
             this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -122,11 +122,6 @@
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(32, 26);
             this.numericUpDown2.TabIndex = 3;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
             // 
             // numericUpDown1
             // 
@@ -139,33 +134,28 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(32, 26);
             this.numericUpDown1.TabIndex = 2;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
             // 
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
+            this.radioButton4.Checked = true;
             this.radioButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton4.Location = new System.Drawing.Point(6, 51);
             this.radioButton4.Name = "radioButton4";
             this.radioButton4.Size = new System.Drawing.Size(105, 20);
             this.radioButton4.TabIndex = 1;
+            this.radioButton4.TabStop = true;
             this.radioButton4.Text = "User Defined";
             this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Checked = true;
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton3.Location = new System.Drawing.Point(6, 23);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(78, 20);
             this.radioButton3.TabIndex = 0;
-            this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Random";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
@@ -307,13 +297,12 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(546, 498);
             this.tableLayoutPanel1.TabIndex = 9;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint_1);
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.MistyRose;
+            this.button2.BackColor = System.Drawing.Color.RosyBrown;
             this.button2.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(388, 516);
+            this.button2.Location = new System.Drawing.Point(368, 532);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(56, 37);
             this.button2.TabIndex = 10;
@@ -324,9 +313,9 @@
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.MistyRose;
+            this.button3.BackColor = System.Drawing.Color.RosyBrown;
             this.button3.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(524, 516);
+            this.button3.Location = new System.Drawing.Point(504, 532);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(56, 37);
             this.button3.TabIndex = 11;
@@ -339,10 +328,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(42, 526);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Navy;
+            this.label6.Location = new System.Drawing.Point(104, 523);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(132, 20);
+            this.label6.Size = new System.Drawing.Size(153, 24);
             this.label6.TabIndex = 7;
             this.label6.Text = "Layout of game #";
             this.label6.Visible = false;
@@ -351,13 +341,38 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(190, 526);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(275, 523);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 20);
+            this.label7.Size = new System.Drawing.Size(42, 24);
             this.label7.TabIndex = 12;
             this.label7.Text = "N/A";
             this.label7.Visible = false;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.OrangeRed;
+            this.label8.Location = new System.Drawing.Point(57, 548);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(200, 24);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Total Squares covered";
+            this.label8.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(275, 548);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 24);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "N/A";
+            this.label9.Visible = false;
             // 
             // Form1
             // 
@@ -366,7 +381,9 @@
             this.BackColor = System.Drawing.Color.Tan;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(987, 581);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -376,7 +393,6 @@
             this.MinimumSize = new System.Drawing.Size(1003, 620);
             this.Name = "Form1";
             this.Text = "Knight\'s Tour";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -416,5 +432,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

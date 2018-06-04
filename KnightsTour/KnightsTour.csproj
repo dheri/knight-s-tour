@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F9F6AAD0-2193-4C9F-B11C-39B14E37CC9A}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>KnightsTour</RootNamespace>
     <AssemblyName>KnightsTour</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
@@ -22,9 +22,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -56,16 +57,25 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>46F50DD6FA69D11517208AE8DC55D0219D449C50</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>A220581946867FAAF372D6025C9B41C02937EB97</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>KnightsTour_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>KnightsTour_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>KnightsTour_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>KnightsTour_1_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -85,7 +95,6 @@
     <Compile Include="Element\ChessSquare.cs" />
     <Compile Include="Element\Utils.cs" />
     <Compile Include="Element\Knight.cs" />
-    <Compile Include="GUI\ChessBoard.cs" />
     <Compile Include="GUI\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,13 +123,13 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="KnightsTour_1_TemporaryKey.pfx" />
     <None Include="KnightsTour_TemporaryKey.pfx" />
-    <None Include="Properties\dark.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\DataSources\Element.ChessBoard.datasource" />
     <None Include="Properties\DataSources\Form1.datasource" />
-    <None Include="Properties\light.bmp" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
@@ -138,6 +147,18 @@
     <None Include="Resources\sweden.png" />
     <None Include="Resources\sweden1_HVG_icon.ico" />
     <Content Include="sweden1_HVG_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="sweden1_HVG_icon.ico">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>False</IncludeHash>
+      <FileType>File</FileType>
+    </PublishFile>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,14 +14,14 @@ namespace GUI
         private Knight knight;
         private string algorithmType;
         private int numOfMoves;
-        public int TotalMoves{ get; set; }
+        public int TotalMoves { get; set; }
 
         public Game(string algorithmType, int initialX, int initialY)
         {
             Init(initialX, initialY);
             this.algorithmType = algorithmType;
         }
-        public void Init( int initialX, int initialY)
+        public void Init(int initialX, int initialY)
         {
             chessBoard = new Element.ChessBoard();
             if (initialX == -1 && initialY == -1)
@@ -30,7 +30,7 @@ namespace GUI
             }
             else
             {
-                knight = new Knight(initialY, initialY, chessBoard);
+                knight = new Knight(initialX, initialY, chessBoard);
             }
             //knight = new Knight();
         }
